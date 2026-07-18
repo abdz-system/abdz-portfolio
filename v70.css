@@ -131,28 +131,45 @@ body {
 
 #cover .enter-button::before {
   content: "Entrer dans le portfolio";
-  left: 50%;
+  left: 31%;
   top: auto;
-  bottom: 18px;
+  bottom: 24%;
   width: auto;
   aspect-ratio: auto;
-  padding: 10px 18px;
-  border: 1px solid rgba(231, 190, 105, .78);
+  padding: 14px 24px;
+  border: 2px solid rgba(239, 194, 91, .96);
   border-radius: 999px;
-  color: #fff8e7;
-  background: rgba(2, 7, 17, .78);
-  box-shadow: 0 0 24px rgba(0, 0, 0, .48);
-  font: 10px Arial, sans-serif;
-  letter-spacing: .14em;
+  color: #fff4d6;
+  background: rgba(29, 4, 7, .94);
+  box-shadow:
+    0 0 0 3px rgba(2, 7, 17, .42),
+    0 0 28px rgba(239, 194, 91, .62),
+    0 10px 24px rgba(0, 0, 0, .62);
+  font: 700 clamp(11px, 1.15vw, 15px) Arial, sans-serif;
+  letter-spacing: .12em;
+  white-space: nowrap;
   text-transform: uppercase;
   transform: translateX(-50%);
   opacity: 1;
-  animation: none;
+  animation: coverEntryVibration 3.2s ease-in-out infinite;
 }
 
 #cover .enter-button::after,
 #cover .touch-pulse {
   display: none;
+}
+
+@keyframes coverEntryVibration {
+  0%, 82%, 100% { transform: translateX(-50%); }
+  84% { transform: translateX(calc(-50% - 3px)) rotate(-.4deg); }
+  86% { transform: translateX(calc(-50% + 3px)) rotate(.4deg); }
+  88% { transform: translateX(calc(-50% - 2px)) rotate(-.25deg); }
+  90% { transform: translateX(calc(-50% + 2px)) rotate(.25deg); }
+  92% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #cover .enter-button::before { animation: none; }
 }
 
 .summary-groups {
