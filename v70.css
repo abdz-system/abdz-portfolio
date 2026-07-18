@@ -275,7 +275,7 @@ body {
 .ireelle-credits span { color: var(--gold); font: 10px Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
 .ireelle-credits strong { color: #fff6e6; font-size: 17px; font-weight: 400; }
 .ireelle-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.ireelle-actions a, .ireelle-song-button, .ireelle-travel-button { border: 1px solid var(--gold); border-radius: 999px; padding: 11px 16px; color: #fff8e7; background: rgba(231, 190, 105, .12); font: 11px Arial, sans-serif; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; cursor: pointer; }
+.ireelle-actions a, .ireelle-song-button, .ireelle-travel-button, .ireelle-family-button { border: 1px solid var(--gold); border-radius: 999px; padding: 11px 16px; color: #fff8e7; background: rgba(231, 190, 105, .12); font: 11px Arial, sans-serif; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; cursor: pointer; }
 .ireelle-travel-button { border-color: #b8212d; background: rgba(184, 33, 45, .18); }
 .site-modal.is-song .site-panel { width: min(94vw, 1100px); height: auto; aspect-ratio: 16 / 9; }
 
@@ -356,7 +356,7 @@ body {
   .ireelle-copy h1 { font-size: 52px; }
   .ireelle-title { margin-bottom: 20px; font-size: 22px; }
   .ireelle-actions { display: grid; }
-  .ireelle-actions a, .ireelle-song-button, .ireelle-travel-button { width: fit-content; max-width: 100%; text-align: center; }
+  .ireelle-actions a, .ireelle-song-button, .ireelle-travel-button, .ireelle-family-button { width: fit-content; max-width: 100%; text-align: center; }
   .family-page { grid-template-columns: minmax(0, 1fr); gap: 20px; width: 92vw; max-height: calc(100svh - 88px); padding: 18px; }
   .family-visual { width: min(100%, 420px); margin: 0 auto; }
   .family-copy h1 { font-size: 48px; }
