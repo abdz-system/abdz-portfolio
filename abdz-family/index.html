@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090806">
+  <title>ABDZ FAMILY — Saison 1</title>
+  <link rel="stylesheet" href="systeme/styles.css">
+  <style>
+    #video-episode-grid { display: none !important; }
+    #video-episode-empty { display: block !important; }
+    .portfolio-return {
+      position: fixed; top: 92px; left: 22px; z-index: 200;
+      border: 1px solid #d7a83f; border-radius: 999px; padding: 10px 15px;
+      color: #f8e7b8; background: rgba(6, 5, 3, .9); font: 700 11px Arial, sans-serif;
+      letter-spacing: .08em; text-decoration: none; text-transform: uppercase;
+    }
+    @media (max-width: 760px) { .portfolio-return { top: 78px; left: 12px; padding: 8px 11px; font-size: 9px; } }
+  </style>
+</head>
+<body data-system-root="systeme/">
+  <header class="topbar">
+    <a class="brand" href="#accueil" aria-label="Retour à l’accueil">
+      <span>ABDZ</span><small>LA FAMILLE</small>
+    </a>
+    <nav aria-label="Navigation principale">
+      <a id="nav-characters" href="#personnages">Personnages</a>
+      <a id="nav-passport" class="feature-paused" href="#passeport-abdz" aria-hidden="true" tabindex="-1">Familles</a>
+      <a id="nav-game" class="feature-paused" href="#jeu-familles" aria-hidden="true" tabindex="-1">Le jeu</a>
+      <a id="nav-episodes" href="#episodes">Épisodes à venir</a>
+      <a id="nav-letter" href="#lettre">Lettre ouverte</a>
+      <button id="language-toggle" class="language-toggle" type="button" aria-label="Switch to English"><span>FR</span><i></i><span>EN</span></button>
+      <button id="edit-toggle" class="edit-toggle" type="button">Mode édition</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="accueil" class="hero" aria-labelledby="hero-title">
+      <div class="hero-backdrop"></div>
+      <div class="hero-content">
+        <p id="hero-eyebrow" class="eyebrow">UNE CRÉATION ORIGINALE ABDZ</p>
+        <h1 id="hero-title">ABDZ<br><span>FAMILY</span></h1>
+        <p id="hero-meta" class="hero-meta">SAISON 1 <i></i> 5 PERSONNAGES <i></i> ÉPISODES À VENIR</p>
+        <p id="hero-copy" class="hero-copy">Chaque carte montre un visage.<br>Chaque dos ouvre une histoire.</p>
+        <div class="hero-actions">
+          <a id="hero-watch" class="primary" href="#personnages"><b>✦</b> Découvrez les personnages</a>
+          <a id="hero-discover" class="secondary" href="#lettre">Découvrir le projet</a>
+        </div>
+      </div>
+      <div id="scroll-cue" class="scroll-cue" aria-hidden="true"><span></span>Découvrir la famille</div>
+    </section>
+
+    <section id="personnages" class="episodes-section" aria-labelledby="characters-title">
+      <div class="section-head">
+        <div>
+          <p id="characters-eyebrow" class="eyebrow">LA FAMILLE</p>
+          <h2 id="characters-title">5 PERSONNAGES.</h2>
+        </div>
+        <p id="characters-intro">Cliquez sur une face.<br>Retournez ensuite la carte.</p>
+      </div>
+      <div id="character-grid" class="episode-grid"></div>
+    </section>
+
+    <section id="new-episodes" class="custom-episodes-section feature-paused" aria-labelledby="custom-episodes-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">LA SUITE DE L’UNIVERS</p>
+          <h2 id="custom-episodes-title">MES NOUVEAUX ÉPISODES.</h2>
+        </div>
+        <p>Chaque nouvel épisode possède une face, un dos et sa vidéo.<br>Tu les ajoutes depuis le mode édition.</p>
+      </div>
+      <div id="custom-episode-grid" class="episode-grid"></div>
+      <p id="custom-episode-empty" class="custom-episode-empty">Ton prochain épisode apparaîtra ici.</p>
+    </section>
+
+    <section id="lettre" class="letter-section">
+      <div class="section-number">00</div>
+      <div class="letter-heading">
+        <p id="letter-eyebrow" class="eyebrow">LETTRE OUVERTE</p>
+        <h2 id="letter-title">AU MONDE,</h2>
+      </div>
+      <div id="letter-copy" class="letter-copy">
+        <p>J’ai créé une famille qui n’existait nulle part.</p>
+        <p>Chaque carte possède un visage et un envers. Chaque personnage porte une allure, une mémoire, une contradiction.</p>
+        <p>Je ne vous présente pas un jeu figé. Je vous ouvre une série vivante : douze épisodes pour rencontrer cette famille et entrer dans son histoire.</p>
+        <p>Les images changeront, les films entreront, les textes grandiront. Mais le geste restera le même : regarder plus longtemps, retourner la carte et laisser une histoire apparaître.</p>
+        <p class="signature">Bienvenue dans la Famille ABDZ.<br><strong>AICHA — ABDZ</strong></p>
+      </div>
+    </section>
+
+    <section id="presentation-famille" class="family-message-section" aria-labelledby="family-message-title">
+      <p id="family-message-eyebrow" class="eyebrow">LE CŒUR D’ABDZ FAMILY</p>
+      <h2 id="family-message-title">NOTRE PRÉSENTATION FAMILLE</h2>
+      <div id="family-message-copy" class="family-message-copy">
+        <p>« Peu importe où la vie vous mène, sachez reconnaître votre vraie famille. Elle ne partage pas forcément votre chair, votre sang ou votre nom. Mais si elle vous voit vraiment, vous accepte tel que vous êtes, vous écoute, vous aime et vous soutient, alors ne cherchez plus : vous avez trouvé votre famille. »</p>
+        <p>« La famille n’est pas toujours celle dont on hérite. C’est parfois celle qui nous reconnaît. »</p>
+      </div>
+      <p id="family-message-signature" class="family-message-signature">ABDZ FAMILY — Une équipe. Une vision. Un rêve. Une famille.</p>
+      <div class="avatar-message-block feature-paused">
+        <p class="eyebrow">À TRAVERS MES AVATARS</p>
+        <h3 id="avatar-message-title">SE RENDRE VISIBLE AUTREMENT</h3>
+        <div id="avatar-message-copy" class="avatar-message-copy"></div>
+      </div>
+    </section>
+
+    <section id="passeport-abdz" class="passport-section feature-paused" aria-labelledby="passport-title">
+      <div class="passport-heading feature-paused">
+        <p class="eyebrow">ENTREZ DANS LA FAMILLE</p>
+        <h2 id="passport-title">CRÉEZ VOTRE CARTE.</h2>
+        <p>Une face pour vos qualités. Un dos pour vos faiblesses. Votre carte reste en attente jusqu’à la validation de The Boss.</p>
+      </div>
+
+      <div id="passport-gate" class="passport-gate feature-paused">
+        <label for="passport-code">PASSEPORT ABDZ — Code d’invitation</label>
+        <div>
+          <div class="passport-code-field">
+            <input id="passport-code" type="password" maxlength="40" autocomplete="off" placeholder="Entrez votre code">
+            <button id="passport-code-visibility" class="passport-code-visibility" type="button" aria-label="Afficher le code" aria-pressed="false">👁</button>
+          </div>
+          <button id="passport-unlock" class="primary" type="button">Demander l’accès</button>
+        </div>
+        <p id="passport-gate-status" role="status"></p>
+      </div>
+
+      <div id="passport-creator" class="passport-creator feature-paused" hidden>
+        <form id="passport-form">
+          <label>Nom de votre famille<input id="passport-family-name" type="text" maxlength="60" placeholder="Ex. Famille Lumière" required></label>
+          <label>Nom ou surnom<input id="passport-name" type="text" maxlength="50" required></label>
+          <label>Titre dans la famille — Jeu des 7 familles
+            <select id="passport-role" required>
+              <option value="">Choisissez un membre</option>
+              <option>Grand-mère</option>
+              <option>Grand-père</option>
+              <option>Mère</option>
+              <option>Père</option>
+              <option>Belle-mère</option>
+              <option>Beau-père</option>
+              <option>Fille</option>
+              <option>Fils</option>
+              <option>Sœur</option>
+              <option>Frère</option>
+              <option>Demi-sœur</option>
+              <option>Demi-frère</option>
+              <option>Tante</option>
+              <option>Oncle</option>
+              <option>Cousine</option>
+              <option>Cousin</option>
+              <option>Nièce</option>
+              <option>Neveu</option>
+              <option>Marraine</option>
+              <option>Parrain</option>
+              <option>Amie de la famille</option>
+              <option>Ami de la famille</option>
+              <option>Animal de la famille</option>
+              <option>Membre de cœur</option>
+            </select>
+          </label>
+          <label>Qualités et pouvoir<textarea id="passport-qualities" rows="4" maxlength="500" required></textarea></label>
+          <label>Faiblesses<textarea id="passport-weaknesses" rows="4" maxlength="500" required></textarea></label>
+          <label>Phrase culte<input id="passport-quote" type="text" maxlength="160" required></label>
+          <label class="passport-file">Image de face<input id="passport-face-image" type="file" accept="image/*" required></label>
+          <label class="passport-file">Image de dos<input id="passport-back-image" type="file" accept="image/*" required></label>
+          <label class="passport-consent"><input id="passport-consent" type="checkbox" required> Je confirme avoir le droit d’utiliser ces images et j’accepte la modération ABDZ.</label>
+          <button id="passport-submit" class="primary" type="submit">Envoyer à The Boss pour validation</button>
+          <p id="passport-submit-status" role="status"></p>
+        </form>
+
+        <div class="passport-preview-area">
+          <div id="passport-preview-card" class="passport-preview-card" data-side="face">
+            <div class="passport-preview-side passport-preview-face">
+              <h2 id="passport-preview-family">NOM DE VOTRE FAMILLE</h2>
+              <span>FACE • QUALITÉS</span>
+              <img id="passport-face-preview" alt="Aperçu de face">
+              <h3 id="passport-preview-name">VOTRE NOM</h3>
+              <p id="passport-preview-role">Votre fonction</p>
+              <strong id="passport-preview-qualities">Votre pouvoir</strong>
+            </div>
+            <div class="passport-preview-side passport-preview-back">
+              <h2 id="passport-preview-family-back">NOM DE VOTRE FAMILLE</h2>
+              <span>DOS • FAIBLESSES</span>
+              <img id="passport-back-preview" alt="Aperçu de dos">
+              <h3 id="passport-preview-name-back">VOTRE NOM</h3>
+              <p id="passport-preview-weaknesses">Vos faiblesses</p>
+              <strong id="passport-preview-quote">« Votre phrase culte »</strong>
+            </div>
+          </div>
+          <button id="passport-flip" class="secondary" type="button">↻ Voir le dos</button>
+        </div>
+      </div>
+
+      <div class="passport-gallery-wrap">
+        <p class="eyebrow">FAMILLES ACCEPTÉES PAR THE BOSS</p>
+        <p class="accepted-families-help">Les cartes acceptées sont regroupées par famille. The Boss peut les déplacer pour organiser l’espace.</p>
+        <div id="passport-approved-gallery" class="passport-approved-gallery"></div>
+      </div>
+    </section>
+
+    <section id="jeu-familles" class="family-game-section feature-paused" aria-labelledby="family-game-title">
+      <div class="game-heading">
+        <p class="eyebrow">ENTREZ DANS LE JEU</p>
+        <h2 id="family-game-title">CHOISISSEZ DEUX CARTES.</h2>
+        <p>Faites rencontrer deux personnages, puis écrivez le scénario que vous souhaitez confier à ABDZ.</p>
+      </div>
+      <div class="scenario-studio">
+        <div class="scenario-pair-picker">
+          <label>Première carte<select id="scenario-card-a" required></select></label>
+          <span class="scenario-plus">+</span>
+          <label>Deuxième carte<select id="scenario-card-b" required></select></label>
+          <div id="scenario-pair-preview" class="scenario-pair-preview" aria-live="polite"></div>
+        </div>
+        <form id="scenario-form" class="scenario-form">
+          <label>Votre nom ou surnom<input id="scenario-author" type="text" maxlength="60" required></label>
+          <label>Titre du scénario<input id="scenario-title" type="text" maxlength="140" required></label>
+          <label>Résumé de l’idée<textarea id="scenario-summary" rows="4" maxlength="700" required></textarea></label>
+          <label>Scénario, scènes et dialogues<textarea id="scenario-story" rows="12" maxlength="8000" required></textarea></label>
+          <button class="primary" type="submit">Envoyer le scénario à The Boss</button>
+          <p id="scenario-submit-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="episodes" class="video-episodes-section" aria-labelledby="episodes-title">
+      <div class="section-head">
+        <div>
+          <p id="episodes-eyebrow" class="eyebrow">PROCHAINEMENT</p>
+          <h2 id="episodes-title">ÉPISODES À VENIR.</h2>
+        </div>
+        <p id="episodes-intro">La Famille ABDZ prépare la suite.<br>Les premiers épisodes arrivent bientôt.</p>
+      </div>
+      <div id="video-episode-grid" class="video-episode-grid"></div>
+      <p id="video-episode-empty" class="custom-episode-empty">Les premiers épisodes arrivent bientôt.</p>
+    </section>
+
+    <section id="guest-episodes" class="guest-episodes-section feature-paused" aria-labelledby="guest-episodes-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">HISTOIRES DU PUBLIC</p>
+          <h2 id="guest-episodes-title">ÉPISODES DES FAMILLES INVITÉES.</h2>
+        </div>
+        <p>Les scénarios acceptés par The Boss apparaissent ici.<br>Les vidéos viendront ensuite.</p>
+      </div>
+      <div id="guest-episode-grid" class="guest-episode-grid"></div>
+    </section>
+
+    <section class="finale">
+      <div>
+        <p id="finale-eyebrow" class="eyebrow">FIN DU PREMIER CHAPITRE</p>
+        <h2 id="finale-title">À VOUS<br>D’ENTRER.</h2>
+      </div>
+      <p id="finale-copy">Regardez. Retournez la carte.<br>Choisissez un personnage.<br>Racontez ce qu’il réveille.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span id="footer-brand">© ABDZ — LA FAMILLE</span>
+    <span id="footer-season">SAISON 1 / ÉPISODES À VENIR</span>
+  </footer>
+
+  <dialog id="episode-dialog" class="episode-dialog">
+    <button id="dialog-close" class="dialog-close" type="button" aria-label="Fermer">×</button>
+    <div class="dialog-media" id="dialog-media"></div>
+    <div class="dialog-info">
+      <p id="dialog-kicker" class="eyebrow"></p>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-description" class="dialog-description"></p>
+    </div>
+  </dialog>
+
+  <dialog id="video-dialog" class="video-dialog">
+    <button id="video-dialog-close" class="dialog-close" type="button" aria-label="Fermer le lecteur">×</button>
+    <div id="video-player-stage" class="video-player-stage"></div>
+    <div class="video-player-info">
+      <p id="video-dialog-kicker" class="eyebrow"></p>
+      <h2 id="video-dialog-title"></h2>
+      <p id="video-dialog-summary"></p>
+      <button id="edit-current-video-episode" class="primary" type="button">Modifier cet épisode</button>
+    </div>
+  </dialog>
+
+  <aside id="editor" class="editor" aria-hidden="true">
+    <div class="editor-head">
+      <div>
+        <p class="eyebrow">VOTRE ESPACE</p>
+        <h2>MODE ÉDITION</h2>
+      </div>
+      <button id="editor-close" type="button" aria-label="Fermer l’éditeur">×</button>
+    </div>
+    <p class="editor-intro">Tu as la main sur les textes, la bannière finale et les épisodes de la Saison 1. Crée autant d’épisodes que tu veux, avec leur titre, leur résumé français et anglais, puis leur vidéo. Tout reste enregistré sur cet ordinateur.</p>
+    <div class="editor-savebar">
+      <div><strong>SAUVEGARDE</strong><span id="save-status">Tous les changements sont conservés</span></div>
+      <button id="save-all" class="primary" type="button">ENREGISTRER TOUT</button>
+    </div>
+    <details class="editor-section" open>
+      <summary>Textes généraux et bannière</summary>
+      <label>Titre de la série
+        <input id="edit-hero-title" type="text" maxlength="80">
+      </label>
+      <label>Phrase d’introduction
+        <textarea id="edit-hero-copy" rows="3" maxlength="300"></textarea>
+      </label>
+      <label>Titre de la lettre ouverte
+        <input id="edit-letter-title" type="text" maxlength="80">
+      </label>
+      <label>Lettre ouverte complète
+        <textarea id="edit-letter-copy" rows="12" maxlength="5000"></textarea>
+      </label>
+      <label>Titre de notre présentation famille
+        <input id="edit-family-message-title" type="text" maxlength="100">
+      </label>
+      <label>Message de notre présentation famille
+        <textarea id="edit-family-message-copy" rows="10" maxlength="5000"></textarea>
+      </label>
+      <label>Signature de notre présentation famille
+        <input id="edit-family-message-signature" type="text" maxlength="200">
+      </label>
+      <label class="feature-paused">Titre du texte sur mes avatars
+        <input id="edit-avatar-message-title" type="text" maxlength="120">
+      </label>
+      <label class="feature-paused">Texte sur mes avatars
+        <textarea id="edit-avatar-message-copy" rows="18" maxlength="8000"></textarea>
+      </label>
+      <label>Surtitre de la bannière finale
+        <input id="edit-finale-eyebrow" type="text" maxlength="100">
+      </label>
+      <label>Grand titre de la bannière finale
+        <input id="edit-finale-title" type="text" maxlength="100">
+      </label>
+      <label>Texte de la bannière finale
+        <textarea id="edit-finale-copy" rows="4" maxlength="500"></textarea>
+      </label>
+      <div class="language-editor-block">
+        <strong>VERSION ANGLAISE</strong>
+        <label>Series title (EN)<input id="edit-hero-title-en" type="text" maxlength="80"></label>
+        <label>Introduction (EN)<textarea id="edit-hero-copy-en" rows="3" maxlength="300"></textarea></label>
+        <label>Open letter title (EN)<input id="edit-letter-title-en" type="text" maxlength="80"></label>
+        <label>Full open letter (EN)<textarea id="edit-letter-copy-en" rows="12" maxlength="5000"></textarea></label>
+        <label>Family presentation title (EN)<input id="edit-family-message-title-en" type="text" maxlength="100"></label>
+        <label>Family presentation message (EN)<textarea id="edit-family-message-copy-en" rows="10" maxlength="5000"></textarea></label>
+        <label>Family presentation signature (EN)<input id="edit-family-message-signature-en" type="text" maxlength="200"></label>
+        <label class="feature-paused">Avatar text title (EN)<input id="edit-avatar-message-title-en" type="text" maxlength="120"></label>
+        <label class="feature-paused">Avatar text (EN)<textarea id="edit-avatar-message-copy-en" rows="18" maxlength="8000"></textarea></label>
+        <label>Final banner eyebrow (EN)<input id="edit-finale-eyebrow-en" type="text" maxlength="100"></label>
+        <label>Final title (EN)<input id="edit-finale-title-en" type="text" maxlength="100"></label>
+        <label>Final text (EN)<textarea id="edit-finale-copy-en" rows="4" maxlength="500"></textarea></label>
+      </div>
+      <label class="upload-label">Bannière de toute la famille
+        <input id="edit-banner" type="file" accept="image/*">
+        <span>Choisir une nouvelle bannière</span>
+      </label>
+      <div id="banner-status" class="media-status">Bannière Famille ABDZ utilisée</div>
+      <label class="upload-label">Bannière anglaise de toute la famille
+        <input id="edit-banner-en" type="file" accept="image/*">
+        <span>Choisir une nouvelle bannière anglaise</span>
+      </label>
+      <div id="banner-status-en" class="media-status">Bannière anglaise ABDZ FAMILY utilisée</div>
+      <button id="save-general" class="primary wide" type="button">Enregistrer les textes généraux</button>
+      <button id="clear-banner" class="editor-link" type="button">Revenir à la bannière originale</button>
+      <button id="clear-banner-en" class="editor-link" type="button">Revenir à la bannière anglaise originale</button>
+    </details>
+    <details class="editor-section" open>
+      <summary>Les 5 personnages fixes — textes et ordre</summary>
+    <label>Face ou dos
+      <select id="edit-episode"></select>
+    </label>
+    <div class="order-controls">
+      <span>Déplacer ce personnage</span>
+      <button id="move-character-left" type="button">← Vers la gauche</button>
+      <button id="move-character-right" type="button">Vers la droite →</button>
+    </div>
+    <label>Nom affiché
+      <input id="edit-title" type="text" maxlength="80">
+    </label>
+    <label>Texte visible sur la carte
+      <input id="edit-kicker" type="text" maxlength="100">
+    </label>
+    <label>Présentation complète de la carte
+      <textarea id="edit-description" rows="7" maxlength="900"></textarea>
+    </label>
+    <div class="language-editor-block">
+      <strong>VERSION ANGLAISE DE LA CARTE</strong>
+      <label>Name (EN)<input id="edit-title-en" type="text" maxlength="80"></label>
+      <label>Card text (EN)<input id="edit-kicker-en" type="text" maxlength="100"></label>
+      <label>Full presentation (EN)<textarea id="edit-description-en" rows="7" maxlength="900"></textarea></label>
+    </div>
+    <label class="upload-label feature-paused">Image ou vidéo
+      <input id="edit-media" type="file" accept="image/*,video/*">
+      <span>Choisir un fichier</span>
+    </label>
+    <div id="media-status" class="media-status feature-paused">Visuel original utilisé</div>
+    <label class="upload-label feature-paused">Image ou vidéo anglaise
+      <input id="edit-media-en" type="file" accept="image/*,video/*">
+      <span>Choisir le fichier anglais</span>
+    </label>
+    <div id="media-status-en" class="media-status feature-paused">Carte anglaise ABDZ FAMILY utilisée</div>
+    <button id="save-episode" class="primary wide" type="button">Enregistrer la carte</button>
+    <button id="clear-media" class="editor-link feature-paused" type="button">Revenir au visuel original</button>
+    <button id="clear-media-en" class="editor-link feature-paused" type="button">Revenir au visuel anglais original</button>
+    </details>
+    <details id="custom-episode-editor" class="editor-section feature-paused">
+      <summary>Mes nouveaux épisodes — face, dos et vidéo</summary>
+      <button id="new-custom-episode" class="primary wide" type="button">+ CRÉER UN NOUVEL ÉPISODE</button>
+      <label>Épisode à modifier
+        <select id="edit-custom-episode"><option value="">Nouvel épisode</option></select>
+      </label>
+      <label>Titre de l’épisode — français
+        <input id="edit-custom-title" type="text" maxlength="100" placeholder="Ex. La nouvelle création ABDZ">
+      </label>
+      <label class="upload-label">Carte FACE
+        <input id="edit-custom-face" type="file" accept="image/*">
+        <span>Choisir l’image de face</span>
+      </label>
+      <div id="custom-face-status" class="media-status">Aucune face sélectionnée</div>
+      <label class="upload-label">Carte DOS
+        <input id="edit-custom-back" type="file" accept="image/*">
+        <span>Choisir l’image du dos</span>
+      </label>
+      <div id="custom-back-status" class="media-status">Aucun dos sélectionné</div>
+      <label class="upload-label">VIDÉO
+        <input id="edit-custom-video" type="file" accept="video/*">
+        <span>Choisir la vidéo</span>
+      </label>
+      <div id="custom-video-status" class="media-status">Aucune vidéo sélectionnée</div>
+      <button id="save-custom-episode" class="primary wide" type="button">ENREGISTRER L’ÉPISODE</button>
+      <button id="delete-custom-episode" class="danger-action wide" type="button" hidden>SUPPRIMER CET ÉPISODE</button>
+    </details>
+    <details id="video-editor-section" class="editor-section" open>
+      <summary>SAISON 1 — Créer mes épisodes</summary>
+      <button id="new-video-episode" class="primary wide" type="button">+ CRÉER UN NOUVEL ÉPISODE</button>
+      <label>Épisode vidéo
+        <select id="edit-video-episode"><option value="">Nouvel épisode</option></select>
+      </label>
+      <label>Titre de l’épisode
+        <input id="edit-video-title" type="text" maxlength="100">
+      </label>
+      <label>Texte / résumé — français
+        <textarea id="edit-video-summary" rows="5" maxlength="1200"></textarea>
+      </label>
+      <div class="language-editor-block">
+        <strong>VERSION ANGLAISE DE L’ÉPISODE</strong>
+        <label>Episode title — English<input id="edit-video-title-en" type="text" maxlength="100"></label>
+        <label>Text / summary — English<textarea id="edit-video-summary-en" rows="5" maxlength="1200"></textarea></label>
+      </div>
+      <label class="upload-label feature-paused">Carte, affiche ou visuel de votre choix
+        <input id="edit-video-poster" type="file" accept="image/*">
+        <span>Choisir le visuel de l’épisode</span>
+      </label>
+      <div id="video-poster-status" class="media-status feature-paused">Affiche proposée utilisée</div>
+      <label class="upload-label">Vidéo de l’épisode
+        <input id="edit-video-file" type="file" accept="video/*">
+        <span>Choisir une vidéo</span>
+      </label>
+      <div id="video-file-status" class="media-status">Aucune vidéo enregistrée</div>
+      <button id="save-video-episode" class="primary wide" type="button">Enregistrer l’épisode vidéo</button>
+      <button id="delete-video-episode" class="danger-action wide" type="button" hidden>Supprimer cet épisode</button>
+      <button id="clear-video-poster" class="editor-link feature-paused" type="button">Revenir à l’affiche proposée</button>
+      <button id="clear-video-file" class="editor-link" type="button">Retirer la vidéo</button>
+    </details>
+    <details class="editor-section feature-paused">
+      <summary>Passeport ABDZ — Administration The Boss</summary>
+      <label>Code d’invitation
+        <input id="edit-passport-code" type="text" maxlength="40">
+      </label>
+      <button id="save-passport-code" class="primary wide" type="button">Enregistrer le code d’invitation</button>
+      <p class="media-status">Aucune carte ne devient publique sans votre approbation.</p>
+      <div id="passport-admin-queue" class="passport-admin-queue"></div>
+      <h3 class="passport-admin-subtitle">Cartes déjà acceptées</h3>
+      <div id="passport-approved-admin" class="passport-admin-queue"></div>
+    </details>
+    <details id="scenario-admin-section" class="editor-section feature-paused">
+      <summary>Scénarios reçus — Validation The Boss</summary>
+      <p class="media-status">Aucun scénario ne devient un épisode invité sans votre approbation.</p>
+      <div id="scenario-admin-queue" class="scenario-admin-queue"></div>
+    </details>
+    <hr>
+    <div class="editor-tools">
+      <button id="export-content" type="button">Exporter les textes</button>
+      <label class="import-button">Importer les textes<input id="import-content" type="file" accept="application/json"></label>
+      <button id="reset-content" class="danger" type="button">Réinitialiser la saison</button>
+    </div>
+  </aside>
+
+  <div id="editor-shade" class="editor-shade"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="systeme/app.js"></script>
+  <a class="portfolio-return" href="../index.html#sommaire">← Retour au portfolio</a>
+</body>
+</html>
