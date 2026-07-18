@@ -11,12 +11,14 @@ const pages = [
   { image: "10-12.png", category: "Canal de diffusion ABDZ", title: "Vidéos et YouTube" },
   { image: "11-12.png", category: "Identité de marque ABDZ", title: "Slogans ABDZ" },
   { image: null, category: "La muse · L’aboutissement ABDZ", title: "L’Iréelle — Unreal Girl in a Real World" },
+  { image: null, category: "Univers narratif · Famille IA", title: "La Famille ABDZ" },
 ];
 
 const screens = Object.fromEntries(["cover", "summary", "detail"].map((id) => [id, document.querySelector(`#${id}`)]));
 const summaryReturnHome = document.querySelector("#summaryReturnHome");
 const profilePage = document.querySelector("#profilePage");
 const ireellePage = document.querySelector("#ireellePage");
+const familyPage = document.querySelector("#familyPage");
 const projectFrame = document.querySelector("#projectFrame");
 const pageImage = document.querySelector("#pageImage");
 const cardLinks = document.querySelector("#cardLinks");
@@ -111,9 +113,10 @@ function updatePage() {
   interactionBadge.hidden = !interactionBadges[current];
   profilePage.hidden = current !== 0;
   ireellePage.hidden = current !== 11;
-  projectFrame.hidden = current === 0 || current === 11;
-  prevButton.hidden = current === 0 || current === 11;
-  nextButton.hidden = current === 0 || current === 11;
+  familyPage.hidden = current !== 12;
+  projectFrame.hidden = current === 0 || current === 11 || current === 12;
+  prevButton.hidden = current === 0 || current === 11 || current === 12;
+  nextButton.hidden = current === 0 || current === 12;
   cardLinks.hidden = true;
   if (item.image) {
     pageImage.src = `images/${item.image}`;
