@@ -116,7 +116,7 @@ function updatePage() {
   familyPage.hidden = current !== 12;
   projectFrame.hidden = current === 0 || current === 11 || current === 12;
   prevButton.hidden = current === 0 || current === 11 || current === 12;
-  nextButton.hidden = current === 0 || current === 12;
+  nextButton.hidden = current === 0 || current === 11 || current === 12;
   cardLinks.hidden = true;
   if (item.image) {
     pageImage.src = `images/${item.image}`;
@@ -238,6 +238,7 @@ function moveAccessoryGallery(delta) {
 }
 
 document.querySelectorAll("[data-page]").forEach((button) => button.addEventListener("click", () => openPage(Number(button.dataset.page))));
+document.querySelector("#ireelleFamilyButton").addEventListener("click", () => openPage(12));
 businessCardLinks.forEach((link) => {
   const anchor = document.createElement("a");
   anchor.href = link.href;
