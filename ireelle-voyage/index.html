@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABDZ - Matrice 20 Cities</title>
+  <style>
+    :root {
+      --bg: #070507;
+      --panel: rgba(11, 8, 12, 0.82);
+      --ink: #fff6df;
+      --muted: rgba(255, 246, 223, 0.72);
+      --gold: #d7a95a;
+      --red: #a20e16;
+      --line: rgba(215, 169, 90, 0.42);
+      --glow: 0 0 28px rgba(215, 169, 90, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(91, 50, 141, 0.28), transparent 34%),
+        radial-gradient(circle at 82% 36%, rgba(215, 169, 90, 0.16), transparent 32%),
+        var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body.audio-ready .start-gate {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.02);
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1780px, 100%);
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 78px);
+      line-height: 0.9;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3vw, 52px);
+      line-height: 0.95;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(360px, 0.78fr) minmax(420px, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding-top: 18px;
+    }
+
+    .matrix-card,
+    .screen-card,
+    .music-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--glow);
+      backdrop-filter: blur(10px);
+    }
+
+    .matrix-card {
+      position: sticky;
+      top: 16px;
+      padding: 12px;
+    }
+
+    .matrix-wrap {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 246, 223, 0.12);
+      background: #111;
+    }
+
+    .matrix-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      user-select: none;
+    }
+
+    .hotspot {
+      position: absolute;
+      border: 1px solid rgba(255, 246, 223, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.01);
+      cursor: pointer;
+      transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .hotspot:hover,
+    .hotspot.active {
+      border-color: rgba(255, 246, 223, 0.82);
+      background: rgba(215, 169, 90, 0.12);
+      box-shadow: 0 0 30px rgba(215, 169, 90, 0.55);
+    }
+
+    .screen-card {
+      min-height: calc(100vh - 124px);
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      padding: 18px;
+    }
+
+    .screen-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    .city-number {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 6vw, 88px);
+      line-height: 0.82;
+    }
+
+    .screen {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 246, 223, 0.22);
+      background: #050505;
+    }
+
+    .screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mix-blend-mode: screen;
+      opacity: 0.5;
+    }
+
+    .screen img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      display: block;
+      object-fit: contain;
+      background: #090909;
+    }
+
+    .screen-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 3;
+      max-width: calc(100% - 36px);
+      padding: 10px 13px;
+      color: var(--ink);
+      background: rgba(5, 5, 5, 0.62);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .screen-label strong {
+      display: block;
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .screen-label span {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+
+    .music-panel {
+      margin-top: 14px;
+      padding: 12px;
+    }
+
+    .music-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .music-head h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .music-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 12px;
+      border: 1px solid var(--gold);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(162, 14, 22, 0.22);
+    }
+
+    .music-frame {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(255, 246, 223, 0.18);
+      background: #050505;
+    }
+
+    .music-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .audio-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(215, 169, 90, 0.24);
+    }
+
+    .sound-btn {
+      min-height: 38px;
+      border: 1px solid var(--gold);
+      background: rgba(162, 14, 22, 0.22);
+      color: var(--ink);
+      padding: 9px 12px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .sound-status {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .start-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(215, 169, 90, 0.22), transparent 34%),
+        rgba(7, 5, 7, 0.88);
+      backdrop-filter: blur(12px);
+      transition: opacity 280ms ease, transform 280ms ease;
+    }
+
+    .start-box {
+      width: min(520px, 100%);
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: rgba(11, 8, 12, 0.88);
+      box-shadow: var(--glow);
+      text-align: center;
+    }
+
+    .start-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .start-box .sound-btn {
+      margin-top: 18px;
+      width: 100%;
+      min-height: 48px;
+    }
+
+    .hint {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1100px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .matrix-card {
+        position: static;
+      }
+
+      .screen-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .shell {
+        padding: 12px;
+      }
+
+      .topbar,
+      .screen-head,
+      .music-head {
+        display: block;
+      }
+
+      .music-link {
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .audio-bar {
+        display: block;
+      }
+
+      .audio-bar .sound-btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .screen,
+      .screen img {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="start-gate" id="startGate">
+    <div class="start-box">
+      <p class="eyebrow">ABDZ / Unreal Girl</p>
+      <h2>Choisis ta ville de coeur</h2>
+      <p class="subtitle">Laisse la musique ouvrir le voyage.</p>
+      <button class="sound-btn" id="startSound" type="button">Entrer avec la musique</button>
+    </div>
+  </div>
+
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ABDZ Creations / Unreal Journey</p>
+        <h1>The Unreal Girl</h1>
+        <p class="subtitle">Choisis ta ville de coeur. L'Irréelle ouvre le monde qui t'appelle.</p>
+      </div>
+      <div>
+        <p class="eyebrow">20 Cities / 1 Muse / 1 Dream</p>
+        <p class="subtitle">Voyage immersif - DERNIERS JETS</p>
+      </div>
+    </header>
+
+    <section class="layout">
+      <article class="matrix-card">
+        <div class="matrix-wrap" id="matrixWrap">
+          <img src="MATRICE.png" alt="Matrice 20 villes ABDZ">
+        </div>
+        <p class="hint">Effleure une ville sur l'image. Chaque porte ouvre une apparition.</p>
+      </article>
+
+      <article class="screen-card">
+        <div class="screen-head">
+          <div>
+            <p class="eyebrow">Ville de coeur</p>
+            <h2 id="cityTitle">New York</h2>
+            <p id="cityMeta" class="subtitle">01 / USA</p>
+          </div>
+          <div id="cityNumber" class="city-number">01</div>
+        </div>
+
+        <div class="screen">
+          <img id="cityImage" src="1-NEW YORK.png" alt="New York">
+          <div class="screen-label">
+            <span id="screenIndex">01 / Ville selectionnee</span>
+            <strong id="screenCity">New York</strong>
+          </div>
+        </div>
+
+        <section class="music-panel" aria-label="Musique officielle ABDZ">
+          <div class="music-head">
+            <div>
+              <p class="eyebrow">Musique officielle</p>
+              <h3>Unreal Girl</h3>
+              <p class="subtitle">La musique accompagne l'apparition.</p>
+            </div>
+            <button class="sound-btn" id="toggleSound" type="button">Pause musique</button>
+          </div>
+          <div class="audio-bar">
+            <p class="sound-status" id="soundStatus">La musique se lance quand tu entres dans la matrice.</p>
+            <audio id="soundtrack" src="UNREAL_GIRL.mp3" preload="auto" loop></audio>
+          </div>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const cities = [
+      { n: "01", city: "New York", country: "USA", file: "1-NEW YORK.png", box: [2.0, 11.5, 17.2, 20.5] },
+      { n: "02", city: "Paris", country: "France", file: "2-PARIS.png", box: [20.0, 14.2, 15.4, 17.8] },
+      { n: "03", city: "Dubaï", country: "UAE", file: "3-DUBAI.png", box: [50.2, 16.4, 13.6, 15.5] },
+      { n: "04", city: "Tokyo", country: "Japon", file: "4-TOKYO.png", box: [65.0, 14.2, 15.2, 17.8] },
+      { n: "05", city: "Londres", country: "UK", file: "5-LONDRES .png", box: [81.4, 11.5, 16.8, 20.5] },
+      { n: "06", city: "Milan", country: "Italie", file: "6-MILAN .png", box: [2.0, 32.8, 17.2, 18.2] },
+      { n: "07", city: "Los Angeles", country: "USA", file: "7-LOS ANGELES .png", box: [20.0, 34.0, 15.4, 17.0] },
+      { n: "08", city: "Séoul", country: "Corée du Sud", file: "8-SEOUL.png", box: [50.2, 34.0, 13.6, 17.0] },
+      { n: "09", city: "Monaco", country: "Monaco", file: "9-MONACO.png", box: [65.0, 34.0, 15.2, 17.0] },
+      { n: "10", city: "Marrakech", country: "Maroc", file: "10-MARAKECH.png", box: [81.4, 32.8, 16.8, 18.2] },
+      { n: "11", city: "Rome", country: "Italie", file: "11-ROME.png", box: [2.0, 51.6, 17.2, 18.6] },
+      { n: "12", city: "Venise", country: "Italie", file: "12.VENISE.png", box: [20.0, 51.6, 15.4, 18.6] },
+      { n: "13", city: "Shanghai", country: "Chine", file: "13-SHANGAI .png", box: [50.2, 51.6, 13.6, 18.6] },
+      { n: "14", city: "Hong Kong", country: "Chine", file: "14-HONG KONG.png", box: [65.0, 51.6, 15.2, 18.6] },
+      { n: "15", city: "Las Vegas", country: "USA", file: "15-LAS VEGAS.png", box: [81.4, 51.6, 16.8, 18.6] },
+      { n: "16", city: "Rio de Janeiro", country: "Brésil", file: "16-RIO DE JANEIRO.png", box: [2.0, 69.6, 17.2, 15.8] },
+      { n: "17", city: "Singapour", country: "Singapour", file: "17-SINGAPOUR.png", box: [20.0, 69.6, 15.4, 15.8] },
+      { n: "18", city: "Sydney", country: "Australie", file: "18-SYDNEY.png", box: [50.2, 69.6, 13.6, 15.8] },
+      { n: "19", city: "Le Caire", country: "Égypte", file: "19-LE CAIRE.png", box: [65.0, 69.6, 15.2, 15.8] },
+      { n: "20", city: "Santorin", country: "Grèce", file: "20-SANTORIN.png", box: [81.4, 69.6, 16.8, 15.8] }
+    ];
+
+    const matrixWrap = document.querySelector("#matrixWrap");
+    const cityImage = document.querySelector("#cityImage");
+    const cityTitle = document.querySelector("#cityTitle");
+    const cityMeta = document.querySelector("#cityMeta");
+    const cityNumber = document.querySelector("#cityNumber");
+    const screenIndex = document.querySelector("#screenIndex");
+    const screenCity = document.querySelector("#screenCity");
+    const soundtrack = document.querySelector("#soundtrack");
+    const startGate = document.querySelector("#startGate");
+    const startSound = document.querySelector("#startSound");
+    const toggleSound = document.querySelector("#toggleSound");
+    const soundStatus = document.querySelector("#soundStatus");
+    let activeIndex = 0;
+    let soundStarted = false;
+
+    function setSoundState(isPlaying) {
+      toggleSound.textContent = isPlaying ? "Pause musique" : "Relancer musique";
+      soundStatus.textContent = isPlaying ? "Musique active dans la matrice." : "Musique en pause.";
+    }
+
+    function startExperience() {
+      document.body.classList.add("audio-ready");
+      soundtrack.volume = 0.82;
+      soundtrack.play().then(() => {
+        soundStarted = true;
+        setSoundState(true);
+      }).catch(() => {
+        soundStarted = false;
+        setSoundState(false);
+        soundStatus.textContent = "Clique sur Relancer musique si Chrome bloque le son.";
+      });
+    }
+
+    function createHotspots() {
+      cities.forEach((item, index) => {
+        const hot = document.createElement("button");
+        hot.type = "button";
+        hot.className = "hotspot";
+        hot.title = `${item.n} ${item.city}`;
+        hot.setAttribute("aria-label", `${item.n} ${item.city}`);
+        hot.dataset.index = index;
+        const [x, y, w, h] = item.box;
+        hot.style.left = `${x}%`;
+        hot.style.top = `${y}%`;
+        hot.style.width = `${w}%`;
+        hot.style.height = `${h}%`;
+        hot.addEventListener("click", () => selectCity(index));
+        matrixWrap.appendChild(hot);
+      });
+    }
+
+    function selectCity(index) {
+      activeIndex = index;
+      const item = cities[index];
+      cityImage.src = item.file;
+      cityImage.alt = item.city;
+      cityTitle.textContent = item.city;
+      cityMeta.textContent = `${item.n} / ${item.country}`;
+      cityNumber.textContent = item.n;
+      screenIndex.textContent = `${item.n} / Ville selectionnee`;
+      screenCity.textContent = item.city;
+
+      document.querySelectorAll("[data-index]").forEach(node => {
+        node.classList.toggle("active", Number(node.dataset.index) === index);
+      });
+    }
+
+    cityImage.addEventListener("dblclick", () => {
+      window.open(cityImage.src, "_blank", "noopener,noreferrer");
+    });
+
+    window.addEventListener("keydown", event => {
+      if (event.key === "ArrowRight") selectCity((activeIndex + 1) % cities.length);
+      if (event.key === "ArrowLeft") selectCity((activeIndex - 1 + cities.length) % cities.length);
+    });
+
+    startSound.addEventListener("click", startExperience);
+
+    toggleSound.addEventListener("click", () => {
+      if (!soundStarted || soundtrack.paused) {
+        soundtrack.play().then(() => {
+          soundStarted = true;
+          setSoundState(true);
+        }).catch(() => {
+          soundStatus.textContent = "Le fichier UNREAL_GIRL.mp3 doit rester dans ce dossier.";
+        });
+      } else {
+        soundtrack.pause();
+        setSoundState(false);
+      }
+    });
+
+    createHotspots();
+    selectCity(0);
+  </script>
+</body>
+</html>

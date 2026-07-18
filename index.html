@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio d’Aïcha Hamdi, directrice artistique indépendante et fondatrice d’ABDZ Creations : création d’univers, identité, storytelling visuel, concepts, images et vidéos." />
+    <meta name="author" content="Aïcha Hamdi — ABDZ Creations" />
+    <meta name="theme-color" content="#05070c" />
+    <title>Aïcha Hamdi — Direction artistique | ABDZ Creations</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="v70.css" />
+  </head>
+  <body>
+    <main id="app" aria-live="polite">
+      <section id="cover" class="screen is-active" aria-label="Ouverture ABDZ">
+        <figure class="visual-frame">
+          <img src="images/ouverture.png" alt="Portfolio ABDZ 2025/2026 - ouverture" />
+          <button id="enterButton" class="enter-button" type="button" aria-label="Entrer dans le portfolio">
+            <span class="touch-pulse pulse-one" aria-hidden="true"></span>
+            <span class="touch-pulse pulse-two" aria-hidden="true"></span>
+            <span class="touch-pulse pulse-three" aria-hidden="true"></span>
+          </button>
+        </figure>
+      </section>
+
+      <section id="summary" class="screen" aria-label="Sommaire ABDZ">
+        <div class="summary-shell">
+          <header class="summary-header">
+            <img src="images/logo-ah-officiel.png" alt="Logo officiel AH — ABDZ Creations" />
+            <div>
+              <p class="eyebrow">Portfolio professionnel 2025/2026</p>
+              <h1>ABDZ Creations<sup>®</sup></h1>
+              <p>Direction artistique indépendante · Création d’univers · Storytelling visuel</p>
+            </div>
+          </header>
+          <p class="portfolio-disclosure">Les projets présentés sont des créations propriétaires, des univers créatifs autonomes et des études personnelles conçus et dirigés par ABDZ Creations.</p>
+          <div class="summary-actions" aria-label="Accès rapide">
+            <button id="summaryOfferButton" class="primary-action" data-open-offer type="button">Découvrir mes services</button>
+              <a class="summary-contact-link" href="mailto:esmeralda@fashion19.fr?subject=Collaboration%20avec%20ABDZ%20Creations">Imaginer une collaboration</a>
+          </div>
+          <p class="portfolio-guide"><strong>Portfolio interactif :</strong> sélectionne un projet. Les symboles ▶ ouvrent les vidéos et les symboles ↗ donnent accès aux expériences associées.</p>
+          <div class="summary-groups" id="summaryLinks" aria-label="Sommaire du portfolio">
+            <section class="summary-group summary-intro">
+              <p class="group-label">Profil & collaboration</p>
+              <button type="button" data-page="0"><span>01</span><strong>Aïcha Hamdi</strong><small>Direction artistique, expertise et collaborations</small></button>
+            </section>
+            <section class="summary-group summary-signatures">
+              <p class="group-label">Créations signatures ABDZ</p>
+              <button type="button" data-page="1"><span>02</span><strong>Caméléon</strong><small>Parfum et mécanisme breveté</small></button>
+              <button type="button" data-page="2"><span>03</span><strong>Innocence</strong><small>Bague manifeste</small></button>
+              <button type="button" data-page="3"><span>04</span><strong>Muses Metamorphosis</strong><small>Univers créatif autonome</small></button>
+              <button type="button" data-page="4"><span>05</span><strong>ABDZ Magazine</strong><small>Édition et direction artistique</small></button>
+            </section>
+            <section class="summary-group">
+              <p class="group-label">Univers & réalisations</p>
+              <button type="button" data-page="5"><span>06</span><strong>Accessoires ABDZ</strong><small>Univers créatif autonome</small></button>
+              <button type="button" data-page="6"><span>07</span><strong>Lieux d'exception</strong><small>Étude créative non commandée</small></button>
+              <button type="button" data-page="7"><span>08</span><strong>Studio ABDZ</strong><small>Espace créatif virtuel, demain lieu physique</small></button>
+              <button type="button" data-page="8"><span>09</span><strong>Ambassadrices ABDZ</strong><small>Univers créatif autonome</small></button>
+              <button type="button" data-page="9"><span>10</span><strong>Vidéos et YouTube</strong></button>
+              <button type="button" data-page="10"><span>11</span><strong>Slogans ABDZ</strong><small>Écriture et identité de marque</small></button>
+              <button type="button" data-page="11"><span>12</span><strong>L’Iréelle</strong><small>La muse — Unreal Girl in a Real World</small></button>
+            </section>
+          </div>
+          <button id="summaryReturnHome" class="summary-home-link" type="button">Retour accueil</button>
+        </div>
+      </section>
+
+      <section id="detail" class="screen" aria-label="Page portfolio ABDZ">
+        <div class="toolbar">
+          <button id="backButton" class="ui-button" type="button">Sommaire</button>
+          <div class="project-meta">
+            <div class="project-heading"><span id="projectCategory"></span><strong id="projectTitle"></strong></div>
+            <div id="interactionBadge" class="interaction-badge" hidden></div>
+          </div>
+          <div class="toolbar-actions">
+            <a class="contact-shortcut" href="mailto:esmeralda@fashion19.fr?subject=Collaboration%20avec%20ABDZ%20Creations">Imaginer une collaboration</a>
+            <span id="counter" class="counter">01 / 12</span>
+          </div>
+        </div>
+
+        <article id="profilePage" class="profile-page">
+          <div class="profile-logo"><img src="images/logo-ah-officiel.png" alt="Logo officiel AH — ABDZ Creations" /></div>
+          <div class="profile-copy">
+            <p class="eyebrow">Direction artistique indépendante</p>
+            <h1>Aïcha Hamdi</h1>
+            <p class="profile-role">Fondatrice d’ABDZ Creations · Créatrice d’univers</p>
+            <ul class="profile-credentials">
+              <li>Directrice artistique indépendante</li>
+              <li>Fondatrice d’ABDZ Magazine</li>
+              <li>Mode · Art · Symboles</li>
+              <li>Innovation parfum — Brevet</li>
+            </ul>
+            <p>Je conçois des univers visuels singuliers à partir d’une histoire, d’un objet, d’un lieu ou d’une identité. Avec ABDZ Creations®, je mène chaque projet de l’idée à sa mise en scène.</p>
+            <p>Concept, narration, identité, images et vidéos : j’assure la vision, la direction artistique et les choix créatifs. L’intelligence artificielle fait partie de mes outils de création.</p>
+            <p>Je propose cette approche aux marques, artistes et organisations qui souhaitent construire une identité forte, sensible et immédiatement reconnaissable.</p>
+            <div class="capabilities" aria-label="Savoir-faire">
+              <span>Direction artistique</span><span>Création d’univers</span><span>Storytelling visuel</span><span>Identité</span><span>Concept produit</span><span>Visuels et vidéos</span>
+            </div>
+            <div class="profile-actions">
+              <button id="discoverButton" class="primary-action" type="button">Voir mes créations</button>
+              <button id="offerButton" class="profile-link-button" data-open-offer type="button">Découvrir mes services</button>
+              <a href="mailto:esmeralda@fashion19.fr?subject=Collaboration%20avec%20ABDZ%20Creations">Imaginer une collaboration</a>
+            </div>
+            <p class="profile-signature">AI is my medium. ABDZ is my voice.</p>
+          </div>
+        </article>
+
+        <article id="ireellePage" class="ireelle-page" hidden>
+          <div class="ireelle-visual">
+            <img src="images/ireelle-unreal-girl.png" alt="L’Iréelle — I’m an Unreal Girl in a Real World" />
+          </div>
+          <div class="ireelle-copy">
+            <p class="eyebrow">La muse · L’aboutissement ABDZ</p>
+            <h1>L’Iréelle</h1>
+            <p class="ireelle-title">I’m an Unreal Girl in a Real World</p>
+            <p class="ireelle-manifesto">Je l’ai cherchée toute ma vie.</p>
+            <p>L’Iréelle n’est pas un personnage de plus : elle est la muse, la continuité et l’aboutissement de mon univers.</p>
+            <p>Elle rassemble l’image, la mode, la musique, l’écriture et toute l’identité ABDZ dans une même histoire.</p>
+            <div class="ireelle-credits">
+              <span>Chanson originale</span>
+              <strong>Paroles écrites par Aïcha Hamdi</strong>
+            </div>
+            <div class="ireelle-actions">
+              <button id="ireelleSongButton" class="ireelle-song-button" type="button">▶ Écouter la chanson</button>
+              <a id="ireelleTravelButton" class="ireelle-travel-button" href="ireelle-voyage/index.html" target="_blank" rel="noopener noreferrer">✦ Voyager avec L’Iréelle</a>
+              <a href="mailto:esmeralda@fashion19.fr?subject=Collaboration%20autour%20de%20L%27Ir%C3%A9elle">Imaginer une collaboration</a>
+            </div>
+          </div>
+        </article>
+
+        <figure id="projectFrame" class="visual-frame">
+          <img id="pageImage" src="images/03-12.png" alt="Portfolio ABDZ" />
+          <div id="cardLinks" class="card-links" aria-label="Liens carte de visite"></div>
+          <div id="pageLinks" class="page-links" aria-label="Liens de page"></div>
+        </figure>
+
+        <button id="prevButton" class="slide-button slide-prev" type="button" aria-label="Page précédente">&lsaquo;</button>
+        <button id="nextButton" class="slide-button slide-next" type="button" aria-label="Page suivante">&rsaquo;</button>
+      </section>
+    </main>
+
+    <div id="videoModal" class="video-modal" hidden role="dialog" aria-modal="true" aria-label="Lecteur vidéo">
+      <div class="video-panel">
+        <div id="videoSequenceCounter" class="video-sequence-counter" hidden>1 / 4</div>
+        <button id="closeVideo" class="video-close" type="button" aria-label="Fermer la vidéo">Fermer</button>
+        <video id="portfolioVideo" controls playsinline preload="metadata"></video>
+      </div>
+    </div>
+    <div id="siteModal" class="site-modal" hidden role="dialog" aria-modal="true" aria-label="Expérience ABDZ">
+      <div class="site-panel">
+        <button id="closeSite" class="site-close" type="button" aria-label="Fermer l’expérience">Fermer</button>
+        <iframe id="siteFrame" title="Expérience ABDZ" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div id="galleryModal" class="gallery-modal" hidden role="dialog" aria-modal="true" aria-label="Galerie accessoires">
+      <div class="gallery-panel">
+        <button id="closeGallery" class="gallery-close" type="button" aria-label="Fermer la galerie">Fermer</button>
+        <button id="prevGallery" class="gallery-nav gallery-prev" type="button" aria-label="Visuel précédent">&lsaquo;</button>
+        <img id="galleryImage" src="images/accessoires/1-accessoire.png" alt="Accessoire ABDZ 1 sur 5" />
+        <button id="nextGallery" class="gallery-nav gallery-next" type="button" aria-label="Visuel suivant">&rsaquo;</button>
+        <div id="galleryCounter" class="gallery-counter">1 / 5</div>
+      </div>
+    </div>
+    <div id="offerModal" class="offer-modal" hidden role="dialog" aria-modal="true" aria-label="Offre commerciale ABDZ">
+      <div class="offer-panel">
+        <div class="offer-toolbar">
+          <strong>ABDZ Creations — Services & collaborations</strong>
+          <button id="closeOffer" class="offer-close" type="button">Fermer</button>
+        </div>
+        <div id="offerPages" class="offer-pages" aria-live="polite"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="offer-viewer.js"></script>
+  </body>
+</html>
