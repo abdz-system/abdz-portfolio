@@ -42,6 +42,36 @@
       font: inherit;
     }
 
+    .portfolio-return {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: rgba(7, 5, 7, 0.94);
+      box-shadow: 0 0 24px rgba(215, 169, 90, 0.24);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .portfolio-return:hover,
+    .portfolio-return:focus-visible {
+      background: var(--gold);
+      color: #070507;
+      outline: none;
+    }
+
     .shell {
       width: min(1780px, 100%);
       margin: 0 auto;
@@ -394,6 +424,8 @@
   </style>
 </head>
 <body>
+  <a class="portfolio-return" href="../index.html#sommaire" aria-label="Retour au sommaire du portfolio ABDZ">← Retour au portfolio</a>
+
   <div class="start-gate" id="startGate">
     <div class="start-box">
       <p class="eyebrow">ABDZ / Unreal Girl</p>
