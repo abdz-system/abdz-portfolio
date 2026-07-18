@@ -134,7 +134,12 @@ body {
 .summary-group button strong { font-size: 17px; font-weight: 400; }
 .summary-group button small { margin-top: 4px; color: rgba(247, 251, 255, .58); font: 11px/1.4 Arial, sans-serif; }
 .summary-group button:hover, .summary-group button:focus-visible { outline: 0; color: #fff3d3; background: rgba(231, 190, 105, .06); transform: translateX(4px); }
-.summary-home-link { right: 28px; bottom: 20px; }
+.summary-home-link {
+  position: static;
+  display: block;
+  width: fit-content;
+  margin: -38px 0 0 auto;
+}
 
 .project-meta {
   position: fixed;
@@ -363,7 +368,7 @@ body {
   .family-title { margin-bottom: 20px; font-size: 21px; }
   .family-actions { display: grid; }
   .family-actions a { width: fit-content; max-width: 100%; text-align: center; }
-  .summary-home-link { right: 16px; }
+  .summary-home-link { margin-top: -38px; }
   .offer-modal { padding: 0; }
   .offer-panel { width: 100vw; height: 100svh; border: 0; border-radius: 0; }
   .offer-toolbar { min-height: 56px; padding: 8px 12px; }
