@@ -165,6 +165,27 @@ body {
   text-shadow: 0 0 10px rgba(231, 190, 105, .62);
 }
 
+.cover-portfolio-signature {
+  position: absolute;
+  left: calc(50% + 66px);
+  bottom: -74px;
+  width: max-content;
+  color: rgba(255, 242, 207, .92);
+  font: 600 12px/1.45 Arial, sans-serif;
+  letter-spacing: .2em;
+  text-align: left;
+  text-shadow: 0 0 11px rgba(231, 190, 105, .36);
+}
+
+@media (max-width: 520px) {
+  .cover-portfolio-signature {
+    left: calc(50% + 50px);
+    bottom: -70px;
+    font-size: 10px;
+    letter-spacing: .13em;
+  }
+}
+
 @keyframes coverRosePulse {
   0%, 100% { filter: brightness(1); }
   50% { filter: brightness(1.18) drop-shadow(0 0 10px rgba(193, 13, 35, .42)); }
